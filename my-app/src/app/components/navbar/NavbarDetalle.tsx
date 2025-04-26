@@ -10,11 +10,14 @@ export default function NavbarDetalle() {
         onClick={() => {}}
         className="p-1 rounded-full hover:opacity-80 transition"
       >
-        <img
+        <Image
           src="/imagenesIconos/image.png"
+          width={20}
+          height={20}
           alt="Icono de perfil"
           className="w-7 h-7 cursor-pointer"
         />
+
       </button>
     </div>
   );

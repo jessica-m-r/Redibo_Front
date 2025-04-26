@@ -4,11 +4,6 @@ import Navbar from '@/app/components/navbar/NavbarDetalle';
 import { useState, useEffect, useMemo, useRef} from 'react';
 import Image from 'next/image';
 import { FaStar, FaStarHalfAlt, FaRegStar } from 'react-icons/fa';
-import UsuarioIcon from './imagenesIconos/usuario.png';
-import KilometrajeIcon from './imagenesIconos/velocimetro.png';
-import TransmisionIcon from './imagenesIconos/caja-de-cambios.png';
-import CombustibleIcon from './imagenesIconos/gasolinera.png';
-import MaletaIcon from './imagenesIconos/maleta.png';
 import { Auto } from '@/types/auto';
 import { Comentario } from '@/types/auto';
 
@@ -236,9 +231,10 @@ export default function DetalleCocheCliente({ auto }: Props) {
                     <div className="flex justify-between items-center w-full">
                       <div className="flex items-center gap-3">
                         <Image 
-                          src={UsuarioIcon} 
+                          src="/imagenesIconos/usuario.png" 
                           alt="Icono de persona"
-                          className="w-10 h-10 rounded-full"
+                          width={30}
+                          height={30}
                         />
                         <div className="flex flex-col text-black">
                           <strong>{comentario.usuario.nombre} {comentario.usuario.apellido}</strong>
@@ -307,9 +303,10 @@ export default function DetalleCocheCliente({ auto }: Props) {
                     key={auto.imagenes[imagenActual].id}
                     src={auto.imagenes[imagenActual].direccionImagen}
                     alt={`Imagen del auto ${auto.marca} ${auto.modelo}`}
-                    fill
+                
                     style={{ objectFit: 'cover' }}
-                    className="rounded-[20px]"
+                    width={800}
+                    height={500}
                   />
                 )}
 
@@ -368,14 +365,15 @@ export default function DetalleCocheCliente({ auto }: Props) {
                 <h2 className="text-[#11295B] text-xl font-bold mb-4">Características Principales</h2>
                 <div className="flex flex-wrap gap-10">
                   {[
-                    { icon: UsuarioIcon, label: 'Capacidad', value: `${auto.capacidad} personas` },
-                    { icon: KilometrajeIcon, label: 'Kilometraje', value: `${auto.kilometraje} km` },
-                    { icon: TransmisionIcon, label: 'Transmisión', value: auto.transmision },
-                    { icon: CombustibleIcon, label: 'Combustible', value: `${auto.combustible} personas` },
-                    { icon: MaletaIcon, label: 'Capacidad', value: `${auto.capacidadMaletero} personas` },
+                    { icon: "/imagenesIconos/usuario.png", label: 'Capacidad', value: `${auto.capacidad} personas` },
+                    { icon: "/imagenesIconos/velocimetro.png", label: 'Kilometraje', value: `${auto.kilometraje} km` },
+                    { icon: "/imagenesIconos/cajaDeCambios.png", label: 'Transmisión', value: auto.transmision },
+                    { icon: "/imagenesIconos/gasolinera.png", label: 'Combustible', value: `${auto.combustible} personas` },
+                    { icon: "/imagenesIconos/maleta.png", label: 'Maletero', value: `${auto.capacidadMaletero} personas` },
+                    
                   ].map(({ icon, label, value }, index) => (
                     <div key={index} className="flex items-center gap-4 flex-wrap">
-                      <Image src={icon} alt={label} className="w-[50px] h-[50px]" />
+                      <Image src={icon} alt={label} width={50} height={50} />
                       <div className="flex flex-col">
                         <span className="font-bold text-[16px] text-black whitespace-nowrap">{value}</span>
                         <span className="text-[14px] text-[#292929]">{label}</span>
@@ -393,7 +391,13 @@ export default function DetalleCocheCliente({ auto }: Props) {
                   <h3 className="text-[#11295b] font-semibold text-center mb-4">Datos del host</h3>
                   <div className="flex justify-center mb-4">
                     <div className="w-[80px] h-[80px] bg-[#ccc] rounded-full flex items-center justify-center">
-                      <Image src={UsuarioIcon} alt="Host" className="w-[80px] h-[80px]" />
+                      <Image 
+                          src="/imagenesIconos/usuario.png" 
+                          alt="Host"
+                          width={20}
+                          height={20}
+                          className="w-[80px] h-[80px]"
+                        />
                     </div>
                   </div>
                   <p className="text-center text-[#333] text-lg mb-0">

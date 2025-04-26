@@ -2,12 +2,11 @@ import { Auto } from '@/types/auto';
 import { notFound } from 'next/navigation';
 import DetalleCocheCliente from './detalleCocheCliente';
 
-interface DetalleCocheProps {
-  params: { id: string };
-}
 
-export default async function DetalleCoche({ params }: DetalleCocheProps) {
-  const { id } = await params;
+export default async function DetalleCoche({ params }: { params: Promise<{ id: string }> }) {
+  const resolvedParams = await params as { id: string };
+  const { id } = resolvedParams;
+
   const res = await fetch(`http://localhost:4000/api/autos/${id}`);
   if (!res.ok) notFound();
 
