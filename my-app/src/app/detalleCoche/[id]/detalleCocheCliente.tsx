@@ -22,7 +22,7 @@ export default function DetalleCocheCliente({ auto }: Props) {
   const [comentariosConOverflow, setComentariosConOverflow] = useState<Record<number, boolean>>({});
 
   useEffect(() => {
-    fetch(`https://deploy-redibo-back.vercel.app/api/autos/${auto.id}/comentarios`)
+    fetch(`http://localhost:4000/api/autos/${auto.id}/comentarios`)
       .then(res => res.json())
       .then(data => {
         setComentarios(data.data);
@@ -305,8 +305,7 @@ export default function DetalleCocheCliente({ auto }: Props) {
                     alt={`Imagen del auto ${auto.marca} ${auto.modelo}`}
                 
                     style={{ objectFit: 'cover' }}
-                    width={800}
-                    height={500}
+                    fill
                   />
                 )}
 
