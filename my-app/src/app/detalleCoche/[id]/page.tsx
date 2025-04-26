@@ -7,7 +7,7 @@ export default async function DetalleCoche({ params }: { params: Promise<{ id: s
   const resolvedParams = await params as { id: string };
   const { id } = resolvedParams;
 
-  const res = await fetch(`http://localhost:4000/api/autos/${id}`);
+  const res = await fetch(`https://deploy-redibo-back.vercel.app/api/autos/${id}`);
   if (!res.ok) notFound();
 
   const data = await res.json();
